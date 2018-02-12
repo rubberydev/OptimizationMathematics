@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Metodo Region aurea</title>
+	<style>
+		table, th, td{
+			border:1px solid black;
+		}
+	</style>
+	<script></script>
+	<script>
+
+		var REG_AUREA = 0.6180;  
+
+		function CalcularX(u,l,tipo){
+
+			if(tipo === 1){
+				var a = l+this.REG_AUREA*(u-l);
+			    return a;
+			}else{
+				var b = u-this.REG_AUREA*(u-l);
+			    return b;
+			}			
+		}
+
+		function CalcularErrorRelativo(u,l,X_opt){
+		     
+		     var ErrorRelativo = (1-this.REG_AUREA)*((u-l)/X_opt)*100;
+		     
+		     return ErrorRelativo;
+		}
+       
+		var Xl = 0;
+		var Xu = 4;
+		var option = "max";
+		function EvaluarX(x){
+
+            var funcionEval = (2*Math.sin(x)-(Math.pow(x,2)/10)).toFixed(4);
+			return funcionEval;
+		}
+  
+            
+        /*var Xl = 0.1;
+		var Xu = 5;
+		var option = "min";
+        function EvaluarX(x){
+
+            var funcionEval = (2*x+(3/x)).toFixed(4);
+			return funcionEval;
+		}	*/
+		/*
+        var Xl = -2;
+		var Xu = 4;
+        var option = "max";
+        function EvaluarX(x){
+
+			var funcionEval = (4*x-(1.8*x**2)+(1.2*x**3)-(0.3*x**4)).toFixed(4);
+		    return funcionEval;
+	    }*/
+    </script>
+</head>	
+<body> 	    
+	  <table>
+			<tr>
+				<th>i</th>				
+		        <th>Xl</th>
+				<th>Xu</th>
+				<th>X1</th>
+				<th>X2</th>
+				<th>F(X1)</th>
+				<th>F(X2)</th>
+				<th>Error Relativo %</th>
+			</tr>	
+		<script>
+		var X1 = CalcularX(Xu, Xl, 1);
+        var X2 = CalcularX(Xu, Xl, 2); 
+                      
+        var F_X1 = EvaluarX(X1);
+        var F_X2 = EvaluarX(X2);
+
+        //calculo el error
+        if(F_X2 < F_X1 && option == "min")
+         var Mistake = CalcularErrorRelativo(Xu,Xl,X2)
+        else if (F_X2 > F_X1 && option == "min")
+         var Mistake = CalcularErrorRelativo(Xu,Xl,X1)
+        else if(F_X2 > F_X1 && option == "max")
+         var Mistake = CalcularErrorRelativo(Xu,Xl,X2)
+        else if (F_X2 < F_X1 && option == "max")
+          var Mistake = CalcularErrorRelativo(Xu,Xl,X1)
+        
+        var count = 0;
+		var criterioParada = true;			
+		while(criterioParada){
+
+	        document.write('<tr>');
+	               document.write('<td>'+count+'</td>');
+                   document.write('<td>'+Xl.toFixed(4)+'</td>');
+                   document.write('<td>'+Xu.toFixed(4)+'</td>');
+                   document.write('<td>'+X1.toFixed(4)+'</td>');
+                   document.write('<td>'+X2.toFixed(4)+'</td>');
+                   document.write('<td>'+F_X1+'</td>');
+                   document.write('<td>'+F_X2+'</td>');		                   
+                   document.write('<td>'+Mistake.toFixed(4)+' %</td>');
+             document.write('<tr>');				
+            
+            //cuando voy hallar un maximo
+			if(F_X2 > F_X1 && option == "max"){
+				 
+				 Xu = X1;						 
+                 X1 = X2;                         
+                 F_X1 = F_X2;	                     
+
+                 var aux = CalcularX(Xu,Xl,2);
+                 X2 = aux;
+                 F_X2 = EvaluarX(X2);
+                 
+                 //calculo el error
+                 if(F_X2 > F_X1)
+                   var Mistake = CalcularErrorRelativo(Xu,Xl,X2)
+                 else
+                   var Mistake = CalcularErrorRelativo(Xu,Xl,X1)
+                 
+			}else if(F_X2 < F_X1 && option == "max"){
+				 
+				 Xl = X2;						 
+                 X2 = X1;	                     
+                 F_X2 = F_X1;
+
+                 var aux = CalcularX(Xu,Xl,1);
+                 X1 = aux;
+
+                 F_X1 = EvaluarX(X1);
+                 
+                 //calculo el error
+                 if(F_X2 > F_X1)
+                   var Mistake = CalcularErrorRelativo(Xu,Xl,X2)
+                 else
+                   var Mistake = CalcularErrorRelativo(Xu,Xl,X1)
+			}
+
+			//cuando voy hallar un minimo
+            if(F_X2 < F_X1 && option == "min"){
+				 
+				 Xu = X1;						 
+                 X1 = X2;                         
+                 F_X1 = F_X2;            
+
+                 var aux = CalcularX(Xu,Xl,2);
+                 X2 = aux;
+                 
+                 F_X2 = EvaluarX(X2);
+                 
+
+                 //calculo el error
+                 if(F_X2 < F_X1)
+                   var Mistake = CalcularErrorRelativo(Xu,Xl,X2);
+                 else
+                   var Mistake = CalcularErrorRelativo(Xu,Xl,X1);
+
+			}else if(F_X2 > F_X1 && option == "min"){
+				 
+				 Xl = X2;						 
+                 X2 = X1;	                     
+                 F_X2 = F_X1;
+
+                 var aux = CalcularX(Xu,Xl,1);
+                 X1 = aux;
+
+                 F_X1 = EvaluarX(X1);
+
+                 //calculo el error
+                 if(F_X2 < F_X1)
+                   var Mistake = CalcularErrorRelativo(Xu,Xl,X2);
+                 else
+                   var Mistake = CalcularErrorRelativo(Xu,Xl,X1);
+
+			}
+
+			var auxMistake;
+            if(Mistake < 0.5 || auxMistake == Mistake)
+            	criterioParada = false
+
+            console.log(Mistake)                    
+            console.log(auxMistake)
+            auxMistake = Mistake;
+            count++;
+		}
+		</script>			
+	</table> 
+</body>
+</html>

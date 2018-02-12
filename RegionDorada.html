@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table, tr, th, td{
+			border: 1px solid black;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="./funciones.js"></script>
+</head>
+<body>
+	<label for="">Selecciona la funcion que quieres optimizar</label>
+	<select name="" id="choose">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+	</select>
+	<br/>
+	<br/>
+	<label for="">Desea calcular el maximo o el minimo de la funcion?</label><br>	
+	<select name="" id="operation">
+		<option value="max">maximo</option>
+		<option value="min">minimo</option>		
+	</select>
+	<br>
+	<br>
+	<button onclick="algorithmGoldRegion();">Calcular</button>
+     <br>
+     <br>
+	 <table>
+			<tr>
+				<th>i</th>				
+		        <th>Xl</th>
+				<th>Xu</th>
+				<th>X1</th>
+				<th>X2</th>
+				<th>F(X1)</th>
+				<th>F(X2)</th>
+				<th>Error Relativo %</th>
+			</tr>
+			<tbody id="bodyTable">
+				
+			</tbody>			
+			
+    </table>
+	
+</body>
+</html>
