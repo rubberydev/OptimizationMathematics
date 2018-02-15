@@ -41,6 +41,11 @@ function algorithmGoldRegion(){
         case 3: 
             var ObjOptimization = new optimizationMath(-2,4);		
         break;
+
+         case 4: 
+            var ObjOptimization = new optimizationMath(-2,1);       
+        break;
+
     }
 
     var EvaluarX = function(x, choice){	
@@ -54,7 +59,10 @@ function algorithmGoldRegion(){
         }else if(choice == 3){
 	        var funcionEval = (4*x-(1.8*x**2)+(1.2*x**3)-(0.3*x**4)).toFixed(4);
 		    return funcionEval;	 	
-        }  		   
+        }else if(choice == 4){
+            var funcionEval = (-(x**4)-(2*x**3)-(8*x**2)-5*x).toFixed(4);
+            return funcionEval;     
+        }            		   
     }
    
     
@@ -72,13 +80,40 @@ function algorithmGoldRegion(){
         var Mistake = ObjOptimization.CalculateMistake(X2)
     else if (F_X2 < F_X1 && actionFn == "max")
         var Mistake = ObjOptimization.CalculateMistake(X1)
+
+    if(Mistake < 0)
+        Mistake = Mistake*-1
      
     console.log(Mistake)   
     var count = 0;
     var stopSentence = true;	
 
     while(stopSentence){
-
+    var popCanvas = document.getElementById("popChart");
+        //var popCanvas = document.getElementById("popChart").getContext("2d");
+        var barChart = new Chart(popCanvas, {
+            type: 'line',
+              data: {
+                labels: [ObjOptimization.Xl.toFixed(4),ObjOptimization.Xu.toFixed(4),X2,X1],
+                datasets: [{
+                  label: actionFn,
+                  data: [F_X2,F_X1],
+                  backgroundColor: [
+                    'rgba(90, 99, 255, 0.6)',
+                    'rgba(54, 162, 255, 0.6)',
+                    'rgba(255, 206, 255, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)',
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)'
+                  ]
+                }]
+              }
+           });
     
     $("#bodyTable").append('<tr>');
 	    $("#bodyTable").append('<td>'+count+'</td>');
@@ -169,8 +204,11 @@ function algorithmGoldRegion(){
                    var Mistake = ObjOptimization.CalculateMistake(X2);
                  else
                    var Mistake = ObjOptimization.CalculateMistake(X1);
+                 
 
 			}
+            if(Mistake < 0)
+                Mistake = Mistake*-1
 
 			var auxMistake;
             if(Mistake < 0.5 || auxMistake == Mistake)

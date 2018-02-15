@@ -7,16 +7,25 @@
 		table, tr, th, td{
 			border: 1px solid black;
 		}
+
+		#tab{
+			display: inline;
+		}
 	</style>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+	<script src="./jquery-3.3.1.js"></script>
 	<script src="./funciones.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
 </head>
 <body>
+	<h1>Metodo de la regi&oacute;n dorada</h1><br>
 	<label for="">Selecciona la funcion que quieres optimizar</label>
 	<select name="" id="choose">
 		<option value="1">1</option>
 		<option value="2">2</option>
 		<option value="3">3</option>
+		<option value="4">4</option>
 	</select>
 	<br/>
 	<br/>
@@ -35,23 +44,25 @@
 	<br>
 	<button onclick="algorithmGoldRegion();">Calcular</button>
      <br>
-     <br>
-	 <table>
-			<tr>
-				<th>i</th>				
-		        <th>Xl</th>
-				<th>Xu</th>
-				<th>X1</th>
-				<th>X2</th>
-				<th>F(X1)</th>
-				<th>F(X2)</th>
-				<th>Error Relativo %</th>
-			</tr>
-			<tbody id="bodyTable">
+     <br>    
+		 <table>
+				<tr>
+					<th>i</th>				
+			        <th>Xl</th>
+					<th>Xu</th>
+					<th>X1</th>
+					<th>X2</th>
+					<th>F(X1)</th>
+					<th>F(X2)</th>
+					<th>Error Relativo %</th>
+				</tr>
+				<tbody id="bodyTable">
+					
+				</tbody>			
 				
-			</tbody>			
-			
-    </table>
-	
+	    </table>
+	    <br>
+        <br> 
+	    <canvas id="popChart" width="200" height="100"></canvas>	
 </body>
 </html>
