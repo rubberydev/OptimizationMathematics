@@ -6,11 +6,7 @@
 	<style>
 		table, tr, th, td{
 			border: 1px solid black;
-		}
-
-		#tab{
-			display: inline;
-		}
+		}		
 	</style>
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 	<script src="./jquery-3.3.1.js"></script>
@@ -26,6 +22,7 @@
 		<option value="2">2</option>
 		<option value="3">3</option>
 		<option value="4">4</option>
+		<option value="5">5</option>
 	</select>
 	<br/>
 	<br/>
@@ -34,15 +31,13 @@
 		<option value="max">maximo</option>
 		<option value="min">minimo</option>		
 	</select>
+	<br>	
+	<h3><strong>1. </strong><i>2Sen(X)-X^2/10  </i><strong>(maximo) || Xl=0      Xu=4</strong></h3>	
+	<h3><strong>2. </strong><i>2X+3/X  </i><strong>(minimo) ||  Xl=0.1      Xu=5</strong></h3>	
+	<h3><strong>3. </strong><i>4X-1.8X^2+1.2X^3-0.3X^4 </i><strong>(maximo) || Xl=-2      Xu=4</strong></h3>
+	<h3><strong>4. </strong><i>-X^4-2X^3-8X^2-5X</i><strong>(maximo) || Xl=-2      Xu=1</strong></h3>		
 	<br>
-	<p> Xl=0      Xu=4 </p>
-	<h3><strong>1. </strong><i>2Sen(X)-X^2/10  </i><strong>(maximo)</strong></h3>	
-	<p> Xl=0.1      Xu=5</p>
-	<h3><strong>2. </strong><i>2X+3/X  </i><strong>(minimo)</strong></h3>
-	<p> Xl=-2      Xu=4</p>	
-	<h3><strong>3. </strong><i>4X-1.8X^2+1.2X^3-0.3X^4 </i><strong>(maximo)</strong></h3>
-	<br>
-	<button onclick="algorithmGoldRegion();">Calcular</button>
+	<button onclick="algorithmGoldRegion();">Calcular</button >
      <br>
      <br>    
 		 <table>

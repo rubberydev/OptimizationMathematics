@@ -46,23 +46,30 @@ function algorithmGoldRegion(){
             var ObjOptimization = new optimizationMath(-2,1);       
         break;
 
+        case 5: 
+            var ObjOptimization = new optimizationMath(0,1);       
+        break;
+
     }
 
     var EvaluarX = function(x, choice){	
 
         if(choice == 1){
-            var funcionEval = (2*Math.sin(x)-(Math.pow(x,2)/10)).toFixed(4);
+            var funcionEval = (2*Math.sin(x)-(Math.pow(x,2)/10)).toPrecision(5);
 			return funcionEval;
         }else if (choice == 2){
-        	var funcionEval = (2*x+(3/x)).toFixed(4);
+        	var funcionEval = (2*x+(3/x)).toPrecision(5);
 			return funcionEval;
         }else if(choice == 3){
-	        var funcionEval = (4*x-(1.8*x**2)+(1.2*x**3)-(0.3*x**4)).toFixed(4);
+	        var funcionEval = (4*x-(1.8*x**2)+(1.2*x**3)-(0.3*x**4)).toPrecision(5);
 		    return funcionEval;	 	
         }else if(choice == 4){
-            var funcionEval = (-(x**4)-(2*x**3)-(8*x**2)-5*x).toFixed(4);
+            var funcionEval = (-(x**4)-(2*x**3)-(8*x**2)-5*x).toPrecision(5);
             return funcionEval;     
-        }            		   
+        }else if(choice == 5){
+            var funcionEval = (-(x**5)-(2*x**2)+(3*x)+1).toPrecision(5);
+            return funcionEval;     
+        }                  		   
     }
    
     
@@ -94,7 +101,7 @@ function algorithmGoldRegion(){
         var barChart = new Chart(popCanvas, {
             type: 'line',
               data: {
-                labels: [ObjOptimization.Xl.toFixed(4),ObjOptimization.Xu.toFixed(4),X2,X1],
+                labels: [ObjOptimization.Xl.toPrecision(5),ObjOptimization.Xu.toPrecision(5),X2,X1],
                 datasets: [{
                   label: actionFn,
                   data: [F_X2,F_X1],
@@ -117,13 +124,13 @@ function algorithmGoldRegion(){
     
     $("#bodyTable").append('<tr>');
 	    $("#bodyTable").append('<td>'+count+'</td>');
-	    $("#bodyTable").append('<td>'+ObjOptimization.Xl.toFixed(4)+'</td>');
-	    $("#bodyTable").append('<td>'+ObjOptimization.Xu.toFixed(4)+'</td>');
-	    $("#bodyTable").append('<td>'+X1.toFixed(4)+'</td>');
-	    $("#bodyTable").append('<td>'+X2.toFixed(4)+'</td>');
+	    $("#bodyTable").append('<td>'+ObjOptimization.Xl.toPrecision(5)+'</td>');
+	    $("#bodyTable").append('<td>'+ObjOptimization.Xu.toPrecision(5)+'</td>');
+	    $("#bodyTable").append('<td>'+X1.toPrecision(5)+'</td>');
+	    $("#bodyTable").append('<td>'+X2.toPrecision(5)+'</td>');
 	    $("#bodyTable").append('<td>'+F_X1+'</td>');
 	    $("#bodyTable").append('<td>'+F_X2+'</td>');
-	    $("#bodyTable").append('<td>'+Mistake.toFixed(4)+' <strong>%</strong></td>');
+	    $("#bodyTable").append('<td>'+Mistake.toPrecision(5)+' <strong>%</strong></td>');
     $("#bodyTable").append('</tr>');
 
 
@@ -134,7 +141,7 @@ function algorithmGoldRegion(){
                  X1 = X2;                         
                  F_X1 = F_X2;	                     
                  
-                 console.log(ObjOptimization.Xu.toFixed(4),actionFn);
+                 console.log(ObjOptimization.Xu.toPrecision(4),actionFn);
                  console.log(X1);
 
                  var aux = ObjOptimization.CalculateX(2);
