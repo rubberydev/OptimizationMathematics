@@ -1,22 +1,36 @@
-var num = 2;
-var i = 0;
-var b = 0;
-var a = 0;
+var num = [];
+var i = 3;
+
+num.push(2);
+
 while(i < 100)
 {
-	if(i%2 === 0)
-	{
-       console.error("the number it doesn't cousin "+i);
-	}else
-	{
-	  a++;
-      while(a < 100 && a !== b)
-      {
-          b = i*a;
-          console.info("..."+b)
-          a++;
+	var cousin = true;
+  
+  for (var x in num)
+  {
+  
+  //num.forEach(function(x){
+     //var aux = parseInt(x);
 
-      }
-	}
-   i++  
+     //for(var z = 0; z<num.length;z++)
+     //{
+       aux = num[x];
+       if(i % aux  === 0)
+       {
+        cousin = false; 
+        break; //sirve para terminar de forma abrupta el bucle for
+        //return; //solo se puede usar en forEach statement
+       }
+   }
+     
+
+     if(cousin)
+     {
+        num.push(i);               
+      }  
+  //})         
+  //} 
+  console.log(num);
+ i++ 
 }
