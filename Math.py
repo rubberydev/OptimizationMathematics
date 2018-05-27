@@ -41,7 +41,7 @@ print(getsin(math.pi/4)) # returns 0.7071067811865475
 #==========================================================
 criba = [] 
 
-for nro in range(2,100): 
+for nro in range(2,100000): 
     primo = True 
     for i in criba: 
         if nro % i == 0: 

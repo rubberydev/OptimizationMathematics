@@ -38,7 +38,7 @@ while(i < 100)
        aux = num[x];
        if(i % aux  === 0)
        {
-        cousin = false; 
+        this.cousin = false; 
         break; //sirve para terminar de forma abrupta el bucle for       
        }
     

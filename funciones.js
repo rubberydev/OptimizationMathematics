@@ -1,4 +1,8 @@
-
+setInterval(function(){ 
+    var date = new Date(); 
+    var d = date.toLocaleTimeString(); 
+    document.getElementById('hourCount').innerHTML = d;
+},1000);
 
 var optimizationMath = function(Xl,Xu){
     this.REG_AUREA = 0.6180; 
