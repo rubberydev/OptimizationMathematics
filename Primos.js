@@ -3,6 +3,8 @@ var i = 3;
 
 num.push(2);
 
+var beginProcess = new Date();
+
 //Novato
 /*while(i < 100)
 {
@@ -29,7 +31,7 @@ if(cousin)
 
 //este algoritmo es mucho mas rapido ya que una vez encontrado que no es primo
 //controlo la salida del ciclo
-while(i < 100)
+/*while(i < 100)
 {
 	var cousin = true;
   
@@ -50,7 +52,54 @@ if(cousin)
 }   
   console.log(num);
  i++ 
+}*/
+
+//con la palabra reservada of no necesito usar el index para recorrer el array
+while(i < 100000)
+{
+  var cousin = true;
+  
+  for (var x of num)
+  {            
+       if(i % x === 0)
+       {
+        this.cousin = false; 
+        break; //sirve para terminar de forma abrupta el bucle for       
+       }
+    
+   }     
+
+if(cousin)
+{
+  num.push(i);               
+}   
+  console.log(num[i]);  
+ i++ 
 }
+
+
+window.onload = function()
+{
+  document.getElementById("arr").innerHTML = num.join(" || ");
+
+  var endProcess = new Date();
+
+  var durationProcess = this.CalculateTime(this.beginProcess, endProcess);
+  
+  document.getElementById("durProcess").innerHTML = "El proceso para calcular los numeros primos fue de: "+ durationProcess.toFixed(0) +" segundos";
+}
+
+
+function CalculateTime(begin, end)
+{
+   var Duration = end.getTime() - begin.getTime(); 
+
+   return Duration/1000;
+}
+
+
+//document.getElementById("durationProcess").innerHTML = 
+
 
 //este algoritmo tambien funciona pero es poco optimo porque asi ya este determinado que el numero
 //no es primo el sigue iterando hasta encontrar todos los numeros del array

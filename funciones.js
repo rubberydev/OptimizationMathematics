@@ -125,21 +125,18 @@ function algorithmGoldRegion(){
                 }]
               }
            });
-    /*
-    var bodyTable = document.getElementById('bodyTable');
-
-  bodyTable.appendChild('<tr>');  
-    bodyTable.appendChild('<td>'+count+'</td>');
-    bodyTable.appendChild('<td>'+ObjOptimization.Xl.toPrecision(5)+'</td>');
+    
+    
+ /*bodyTable.appendChild('<td>'+ObjOptimization.Xl.toPrecision(5)+'</td>');
     bodyTable.appendChild('<td>'+ObjOptimization.Xu.toPrecision(5)+'</td>');
     bodyTable.appendChild('<td>'+X1.toPrecision(5)+'</td>');
     bodyTable.appendChild('<td>'+X2.toPrecision(5)+'</td>');
     bodyTable.appendChild('<td>'+F_X1+'</td>');
     bodyTable.appendChild('<td>'+F_X2+'</td>');
     bodyTable.appendChild('<td>'+Mistake.toPrecision(5)+' <strong>%</strong></td>');
- bodyTable.appendChild('</tr>');
-*/
-     $("#bodyTable").append('<tr>');
+ bodyTable.appendChild('</tr>');*/
+
+    $("#bodyTable").append('<tr>');
 	    $("#bodyTable").append('<td>'+count+'</td>');
 	    $("#bodyTable").append('<td>'+ObjOptimization.Xl.toPrecision(5)+'</td>');
 	    $("#bodyTable").append('<td>'+ObjOptimization.Xu.toPrecision(5)+'</td>');
