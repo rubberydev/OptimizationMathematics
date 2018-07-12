@@ -50,6 +50,8 @@ for nro in range(2,100000):
         criba.append(nro) 
         print(nro)
 
+#comando util para crear server
+# python -m SimpleHTTPServer 8000
 
 
 
